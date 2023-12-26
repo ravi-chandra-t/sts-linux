@@ -1,0 +1,24 @@
+name: Release
+on:
+  push:
+   
+
+jobs:
+  build:
+    name: Release packages
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Creating Tarball
+      run: git archive --format=tar.gz -o linux_package.tar.gz --prefix=sts-linux/ main
+      working-directory: ${{ github.workspace }} 
+    - name: Upload binaries to release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: target/release/mything
+        asset_name: mything
+        tag: ${{ github.ref }}
+        overwrite: true
+        body: "This is my release text"
