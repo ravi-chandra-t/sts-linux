@@ -11,7 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Creating Tarball
-      run: git archive --format=tar.gz -o linux_package.tar.gz --prefix=sts-linux/ main
+      run: git archive --format=tar.gz -o linux_package.tar.gz --prefix=sts-linux/ v6.1-stm32mp
       working-directory: ${{ github.workspace }} 
     - name: Upload binaries to release
       uses: svenstaro/upload-release-action@v2
