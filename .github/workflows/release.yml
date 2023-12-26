@@ -17,8 +17,8 @@ jobs:
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: target/release/mything
-        asset_name: mything
+        file: linux_package.tar.gz
+        asset_name: linux_package.tar.gz
         tag: ${{ github.ref }}
         overwrite: true
         body: "This is my release text"
